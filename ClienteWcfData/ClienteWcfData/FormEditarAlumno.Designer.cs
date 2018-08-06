@@ -43,21 +43,21 @@
             // 
             this.tb_dni.Location = new System.Drawing.Point(91, 164);
             this.tb_dni.Name = "tb_dni";
-            this.tb_dni.Size = new System.Drawing.Size(197, 20);
+            this.tb_dni.Size = new System.Drawing.Size(291, 20);
             this.tb_dni.TabIndex = 6;
             // 
             // tb_apellido
             // 
             this.tb_apellido.Location = new System.Drawing.Point(91, 134);
             this.tb_apellido.Name = "tb_apellido";
-            this.tb_apellido.Size = new System.Drawing.Size(197, 20);
+            this.tb_apellido.Size = new System.Drawing.Size(291, 20);
             this.tb_apellido.TabIndex = 7;
             // 
             // tb_nombre
             // 
             this.tb_nombre.Location = new System.Drawing.Point(91, 106);
             this.tb_nombre.Name = "tb_nombre";
-            this.tb_nombre.Size = new System.Drawing.Size(197, 20);
+            this.tb_nombre.Size = new System.Drawing.Size(291, 20);
             this.tb_nombre.TabIndex = 8;
             // 
             // label3
@@ -89,9 +89,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(118, 212);
+            this.button1.Location = new System.Drawing.Point(170, 200);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(89, 34);
             this.button1.TabIndex = 9;
             this.button1.Text = "Editar";
             this.button1.UseVisualStyleBackColor = true;
@@ -111,14 +111,14 @@
             this.tb_guid.Location = new System.Drawing.Point(91, 67);
             this.tb_guid.Name = "tb_guid";
             this.tb_guid.ReadOnly = true;
-            this.tb_guid.Size = new System.Drawing.Size(197, 20);
+            this.tb_guid.Size = new System.Drawing.Size(291, 20);
             this.tb_guid.TabIndex = 10;
             // 
             // FormEditarAlumno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(312, 246);
+            this.ClientSize = new System.Drawing.Size(420, 246);
             this.Controls.Add(this.tb_guid);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tb_dni);

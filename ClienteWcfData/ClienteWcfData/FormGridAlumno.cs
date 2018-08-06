@@ -18,9 +18,6 @@ namespace ClienteWcfData
         public FormGridAlumno()
         {
             InitializeComponent();
-
-            // Registro del evento add, que se encarga de setear el atributo de la otra clase "class.parametroEvent += EnventHandler(Method)"
-            formAdd.OnAdd += new EventHandler(Actualizar);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -32,6 +29,10 @@ namespace ClienteWcfData
         private void click_Añadir(object sender, EventArgs e)
         {
             formAdd = new FormAñadirAlumno();
+            
+            // Registro del evento add, que se encarga de setear el atributo de la otra clase "class.parametroEvent += EnventHandler(Method)"
+            formAdd.OnAdd += new EventHandler(Actualizar);
+
             formAdd.Show();
         }
         #endregion
@@ -39,7 +40,25 @@ namespace ClienteWcfData
         #region click_Buscar
         private void click_Buscar(object sender, EventArgs e)
         {
+            dgv_grid.DataSource = null;
+            dgv_grid.Rows.Clear();
+            dgv_grid.Columns.Clear();
+            dgv_grid.Refresh();
 
+            ReferenciaWeb.Service1Client svc = new ReferenciaWeb.Service1Client("Http");
+            
+            Alumno alumnoEntontrado = svc.GetByGuid( Guid.Parse(tb_guid.Text) );
+
+            string[] row = new string[] {
+                alumnoEntontrado.Apellidos,
+                alumnoEntontrado.Dni,
+                alumnoEntontrado.Guid.ToString(),
+                alumnoEntontrado.Nombre
+            };            
+            
+
+            dgv_grid.DataSource = row;
+            AñadirButtons(dgv_grid);
         }
         #endregion
 
@@ -60,11 +79,17 @@ namespace ClienteWcfData
         #region GetAllByProtocol
         public void GetAllByProtocol(string protocol)
         {
+            dgv_grid.DataSource = null;
+            dgv_grid.Rows.Clear();
+            dgv_grid.Columns.Clear();
+            dgv_grid.Refresh();
+
             ReferenciaWeb.Service1Client svc = new ReferenciaWeb.Service1Client(protocol);
 
             // Rellenar Grid
             List<Alumno> listaAlumnos = svc.GetAll();
             dgv_grid.DataSource = listaAlumnos;
+
             AñadirButtons(dgv_grid);
         }
         #endregion
@@ -95,15 +120,48 @@ namespace ClienteWcfData
         #region Actualizar
         public void Actualizar(object sender, EventArgs e)
         {
-            ReferenciaWeb.Service1Client svc = new ReferenciaWeb.Service1Client("Http");
-
-            // Rellenar Grid
-            List<Alumno> listaAlumnos = svc.GetAll();
-            dgv_grid.DataSource = listaAlumnos;
-
-            //AñadirButtons(dgv_grid);
+            GetAllByProtocol("Http");
         }
         #endregion
+
+        #region EliminarAlumno
+        public void EliminarAlumno(Guid guid)
+        {
+            ReferenciaWeb.Service1Client svc = new ReferenciaWeb.Service1Client("Http");
+            bool result = svc.Delete(guid);
+
+            if (result == true)
+            {
+                GetAllByProtocol("Http");
+            }
+        }
+        #endregion
+
+        #region ClickBotones
+        private void dgv_grid_click(object sender, DataGridViewCellEventArgs e)
+        {
+            // Editar
+            if(e.ColumnIndex == 4)
+            {
+                Guid guid = Guid.Parse(dgv_grid.Rows[e.RowIndex].Cells[2].Value.ToString());
+                string nombre = dgv_grid.Rows[e.RowIndex].Cells[3].Value.ToString();
+                string apellido = dgv_grid.Rows[e.RowIndex].Cells[0].Value.ToString();
+                string dni = dgv_grid.Rows[e.RowIndex].Cells[1].Value.ToString();
+
+                FormEditarAlumno formEditar = new FormEditarAlumno(guid, nombre, apellido, dni);
+                formEditar.OnEdit += new EventHandler(Actualizar);
+                formEditar.Show();
+            }
+            // Eliminar
+            else if (e.ColumnIndex == 5)
+            {
+                string guidString = dgv_grid.Rows[e.RowIndex].Cells[2].Value.ToString();
+                Guid guid = Guid.Parse(guidString);
+                EliminarAlumno(guid);
+            }
+        }
+        #endregion
+
 
     }
 }

@@ -44,6 +44,7 @@
             this.dgv_grid.Name = "dgv_grid";
             this.dgv_grid.Size = new System.Drawing.Size(698, 198);
             this.dgv_grid.TabIndex = 0;
+            this.dgv_grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_grid_click);
             // 
             // bt_añadir
             // 

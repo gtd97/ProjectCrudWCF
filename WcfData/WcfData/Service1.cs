@@ -49,7 +49,23 @@ namespace WcfData
 
         public Alumno Put(Guid guid, Alumno alumno)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Alumno alumnoEncontrado = db.Alumno.Where(x => x.Guid == guid).FirstOrDefault();
+
+                alumnoEncontrado.Guid = alumno.Guid;
+                alumnoEncontrado.Nombre = alumno.Nombre;
+                alumnoEncontrado.Apellidos = alumno.Apellidos;
+                alumnoEncontrado.Dni = alumno.Dni;
+
+                db.SaveChanges();
+
+                return GetByGuid(alumno.Guid);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
 

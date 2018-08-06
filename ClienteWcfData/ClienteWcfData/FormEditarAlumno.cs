@@ -13,22 +13,35 @@ namespace ClienteWcfData
 {
     public partial class FormEditarAlumno : Form
     {
-        public event EventHandler ok;
+        public event EventHandler OnEdit;
 
-        public FormEditarAlumno()
+        public FormEditarAlumno(Guid guid, string nombre, string apellido, string dni)
         {
             InitializeComponent();
+
+            tb_guid.Text = guid.ToString();
+            tb_nombre.Text = nombre;
+            tb_apellido.Text = apellido;
+            tb_dni.Text = dni;
         }
 
+        #region click_editar
         private void click_editar(object sender, EventArgs e)
         {
             ReferenciaWeb.Service1Client svc = new ReferenciaWeb.Service1Client("Http");
 
             Alumno alumnoNuevo = new Alumno { Guid = Guid.Parse(tb_guid.Text), Nombre = tb_nombre.Text, Apellidos = tb_apellido.Text, Dni = tb_dni.Text };
 
-            Alumno alumnoObtenido = svc.Put(Guid.Parse(tb_guid.Text), alumnoNuevo);
+            Alumno alumnoModificado = svc.Put(Guid.Parse(tb_guid.Text), alumnoNuevo);
 
-            ok("Alumno añadido", null);
+            if (alumnoModificado != null && OnEdit != null)
+            {
+                OnEdit(this, e);
+            }
+
+            Close();
         }
+        #endregion
+
     }
 }
