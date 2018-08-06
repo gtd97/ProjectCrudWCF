@@ -15,7 +15,7 @@ namespace ClienteWcfData.ReferenciaWeb {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Alumno", Namespace="http://schemas.datacontract.org/2004/07/WcfData")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Alumno", Namespace="http://schemas.datacontract.org/2004/07/WcfData.Model")]
     [System.SerializableAttribute()]
     public partial class Alumno : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -24,6 +24,12 @@ namespace ClienteWcfData.ReferenciaWeb {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ApellidosField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DniField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid GuidField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NombreField;
@@ -47,6 +53,32 @@ namespace ClienteWcfData.ReferenciaWeb {
                 if ((object.ReferenceEquals(this.ApellidosField, value) != true)) {
                     this.ApellidosField = value;
                     this.RaisePropertyChanged("Apellidos");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Dni {
+            get {
+                return this.DniField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DniField, value) != true)) {
+                    this.DniField = value;
+                    this.RaisePropertyChanged("Dni");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid Guid {
+            get {
+                return this.GuidField;
+            }
+            set {
+                if ((this.GuidField.Equals(value) != true)) {
+                    this.GuidField = value;
+                    this.RaisePropertyChanged("Guid");
                 }
             }
         }
@@ -83,6 +115,30 @@ namespace ClienteWcfData.ReferenciaWeb {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAll", ReplyAction="http://tempuri.org/IService1/GetAllResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<ClienteWcfData.ReferenciaWeb.Alumno>> GetAllAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetByGuid", ReplyAction="http://tempuri.org/IService1/GetByGuidResponse")]
+        ClienteWcfData.ReferenciaWeb.Alumno GetByGuid(System.Guid guid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetByGuid", ReplyAction="http://tempuri.org/IService1/GetByGuidResponse")]
+        System.Threading.Tasks.Task<ClienteWcfData.ReferenciaWeb.Alumno> GetByGuidAsync(System.Guid guid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Post", ReplyAction="http://tempuri.org/IService1/PostResponse")]
+        ClienteWcfData.ReferenciaWeb.Alumno Post(ClienteWcfData.ReferenciaWeb.Alumno alumno);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Post", ReplyAction="http://tempuri.org/IService1/PostResponse")]
+        System.Threading.Tasks.Task<ClienteWcfData.ReferenciaWeb.Alumno> PostAsync(ClienteWcfData.ReferenciaWeb.Alumno alumno);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Put", ReplyAction="http://tempuri.org/IService1/PutResponse")]
+        ClienteWcfData.ReferenciaWeb.Alumno Put(System.Guid guid, ClienteWcfData.ReferenciaWeb.Alumno alumno);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Put", ReplyAction="http://tempuri.org/IService1/PutResponse")]
+        System.Threading.Tasks.Task<ClienteWcfData.ReferenciaWeb.Alumno> PutAsync(System.Guid guid, ClienteWcfData.ReferenciaWeb.Alumno alumno);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Delete", ReplyAction="http://tempuri.org/IService1/DeleteResponse")]
+        bool Delete(System.Guid guid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Delete", ReplyAction="http://tempuri.org/IService1/DeleteResponse")]
+        System.Threading.Tasks.Task<bool> DeleteAsync(System.Guid guid);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -118,6 +174,38 @@ namespace ClienteWcfData.ReferenciaWeb {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<ClienteWcfData.ReferenciaWeb.Alumno>> GetAllAsync() {
             return base.Channel.GetAllAsync();
+        }
+        
+        public ClienteWcfData.ReferenciaWeb.Alumno GetByGuid(System.Guid guid) {
+            return base.Channel.GetByGuid(guid);
+        }
+        
+        public System.Threading.Tasks.Task<ClienteWcfData.ReferenciaWeb.Alumno> GetByGuidAsync(System.Guid guid) {
+            return base.Channel.GetByGuidAsync(guid);
+        }
+        
+        public ClienteWcfData.ReferenciaWeb.Alumno Post(ClienteWcfData.ReferenciaWeb.Alumno alumno) {
+            return base.Channel.Post(alumno);
+        }
+        
+        public System.Threading.Tasks.Task<ClienteWcfData.ReferenciaWeb.Alumno> PostAsync(ClienteWcfData.ReferenciaWeb.Alumno alumno) {
+            return base.Channel.PostAsync(alumno);
+        }
+        
+        public ClienteWcfData.ReferenciaWeb.Alumno Put(System.Guid guid, ClienteWcfData.ReferenciaWeb.Alumno alumno) {
+            return base.Channel.Put(guid, alumno);
+        }
+        
+        public System.Threading.Tasks.Task<ClienteWcfData.ReferenciaWeb.Alumno> PutAsync(System.Guid guid, ClienteWcfData.ReferenciaWeb.Alumno alumno) {
+            return base.Channel.PutAsync(guid, alumno);
+        }
+        
+        public bool Delete(System.Guid guid) {
+            return base.Channel.Delete(guid);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteAsync(System.Guid guid) {
+            return base.Channel.DeleteAsync(guid);
         }
     }
 }

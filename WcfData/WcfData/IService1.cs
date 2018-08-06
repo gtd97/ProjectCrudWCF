@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using WcfData.Model;
 
 namespace WcfData
 {
@@ -14,7 +15,17 @@ namespace WcfData
         [OperationContract]
         List<Alumno> GetAll();
 
-        
+        [OperationContract]
+        Alumno GetByGuid(Guid guid);
+
+        [OperationContract]
+        Alumno Post(Alumno alumno);
+
+        [OperationContract]
+        Alumno Put(Guid guid, Alumno alumno);
+
+        [OperationContract]
+        bool Delete(Guid guid);
     }
 
     

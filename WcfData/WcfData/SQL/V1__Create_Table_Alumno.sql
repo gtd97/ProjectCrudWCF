@@ -1,0 +1,14 @@
+﻿USE ProjectCrudWcf
+GO
+
+IF OBJECT_ID(N'ProjectCrudWcf.dbo.Alumno', N'U') IS NULL
+BEGIN
+
+CREATE TABLE dbo.Alumno
+(
+	Guid UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+	Nombre [NVARCHAR] (50) NOT NULL,
+	Apellidos [NVARCHAR] (80) NOT NULL,
+	Dni [NVARCHAR] (9) NOT NULL
+);
+END

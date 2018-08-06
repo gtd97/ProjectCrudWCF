@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import namespace="http://schemas.datacontract.org/2004/07/WcfData" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/WcfData.Model" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:element name="GetAll">
     <xs:complexType>
       <xs:sequence />
@@ -9,7 +10,64 @@
   <xs:element name="GetAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WcfData" minOccurs="0" name="GetAllResult" nillable="true" type="q1:ArrayOfAlumno" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WcfData.Model" minOccurs="0" name="GetAllResult" nillable="true" type="q1:ArrayOfAlumno" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetByGuid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="guid" type="q2:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetByGuidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfData.Model" minOccurs="0" name="GetByGuidResult" nillable="true" type="q3:Alumno" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Post">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WcfData.Model" minOccurs="0" name="alumno" nillable="true" type="q4:Alumno" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PostResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WcfData.Model" minOccurs="0" name="PostResult" nillable="true" type="q5:Alumno" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Put">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="guid" type="q6:guid" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WcfData.Model" minOccurs="0" name="alumno" nillable="true" type="q7:Alumno" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PutResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WcfData.Model" minOccurs="0" name="PutResult" nillable="true" type="q8:Alumno" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Delete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="guid" type="q9:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
