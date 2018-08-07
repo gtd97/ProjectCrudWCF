@@ -15,14 +15,14 @@ namespace ClienteWcfData
     {
         public event EventHandler OnEdit;
 
-        public FormEditarAlumno(Guid guid, string nombre, string apellido, string dni)
+        public FormEditarAlumno(Alumno alumno)
         {
             InitializeComponent();
 
-            tb_guid.Text = guid.ToString();
-            tb_nombre.Text = nombre;
-            tb_apellido.Text = apellido;
-            tb_dni.Text = dni;
+            tb_guid.Text = alumno.Guid.ToString();
+            tb_nombre.Text = alumno.Nombre;
+            tb_apellido.Text = alumno.Apellidos;
+            tb_dni.Text = alumno.Dni;
         }
 
         #region click_editar

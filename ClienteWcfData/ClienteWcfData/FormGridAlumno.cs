@@ -14,15 +14,17 @@ namespace ClienteWcfData
     public partial class FormGridAlumno : Form
     {
         FormAñadirAlumno formAdd;
+        SingleConnection _conn;
 
         public FormGridAlumno()
         {
             InitializeComponent();
+
+            _conn = SingleConnection.Instance();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //MessageBox.Show(listaAlumnos.Count.ToString());
         }
 
         #region click_Añadir
@@ -148,7 +150,9 @@ namespace ClienteWcfData
                 string apellido = dgv_grid.Rows[e.RowIndex].Cells[0].Value.ToString();
                 string dni = dgv_grid.Rows[e.RowIndex].Cells[1].Value.ToString();
 
-                FormEditarAlumno formEditar = new FormEditarAlumno(guid, nombre, apellido, dni);
+                Alumno alumnoEditar = new Alumno { Guid = guid, Nombre = nombre, Apellidos = apellido, Dni = dni };
+
+                FormEditarAlumno formEditar = new FormEditarAlumno(alumnoEditar);
                 formEditar.OnEdit += new EventHandler(Actualizar);
                 formEditar.Show();
             }
