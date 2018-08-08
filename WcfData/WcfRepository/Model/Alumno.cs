@@ -7,31 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WcfData.Model
+namespace WcfRepository.Model
 {
     using System;
     using System.Collections.Generic;
-    using System.Runtime.Serialization;
-
-
-    [DataContract]
+    
     public partial class Alumno
     {
-        [DataMember]
         public System.Guid Guid { get; set; }
-
-        [DataMember]
         public string Nombre { get; set; }
-
-        [DataMember]
         public string Apellidos { get; set; }
-
-        [DataMember]
         public string Dni { get; set; }
-
-
-        public Alumno() { }
-        
     }
-    
 }

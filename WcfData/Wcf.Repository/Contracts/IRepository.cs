@@ -4,12 +4,13 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using WcfRepository.Model;
+using Wcf.Repository.Model;
 
 namespace WcfData
 {
+    // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de interfaz "IService1" en el código y en el archivo de configuración a la vez.
     [ServiceContract]
-    public interface IService1
+    public interface IService
     {
         [OperationContract]
         List<Alumno> GetAll();
@@ -25,5 +26,7 @@ namespace WcfData
 
         [OperationContract]
         bool Delete(Guid guid);
-    }    
+    }
+
+    
 }

@@ -21,13 +21,13 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/WcfData/Service1/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="http://localhost:28459/Service1.svc/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="dc24f171-b097-4615-a006-fb8c7e7fadac" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WcfData/Service1/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="dba56728-6d83-476b-aa11-c4c247d6e030" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WcfData/Service1/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="ded0e04c-9f0b-4246-985d-2c5cad7cc2ff" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WcfData/Service1/mex" />
-    <MetadataFile FileName="WcfData.Model.xsd" MetadataType="Schema" ID="899e4ff5-6644-4099-8027-f7ec06d29335" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WcfData/Service1/mex" />
+    <MetadataFile FileName="service1.wsdl" MetadataType="Wsdl" ID="a2f10032-b6a5-41ba-a2e2-bd3e4542d28c" SourceId="1" SourceUrl="http://localhost:28459/Service1.svc/mex" />
+    <MetadataFile FileName="service2.xsd" MetadataType="Schema" ID="b24c25a8-eca9-414b-84d8-d88aacbc4b28" SourceId="1" SourceUrl="http://localhost:28459/Service1.svc/mex" />
+    <MetadataFile FileName="service21.xsd" MetadataType="Schema" ID="9f36feb6-e750-455a-866a-206946930ddd" SourceId="1" SourceUrl="http://localhost:28459/Service1.svc/mex" />
+    <MetadataFile FileName="WcfRepository.Model1.xsd" MetadataType="Schema" ID="948e13aa-2723-4156-adcf-784f1db61929" SourceId="1" SourceUrl="http://localhost:28459/Service1.svc/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

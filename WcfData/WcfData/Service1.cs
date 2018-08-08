@@ -1,47 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
 using System.Text;
-using WcfData.Model;
+using System.Threading.Tasks;
+using WcfRepository;
+using WcfRepository.Model;
 
 namespace WcfData
-{
-    // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "Service1" en el código y en el archivo de configuración a la vez.
+{ 
     public class Service1 : IService1
     {
-        ProjectCrudWcfEntities db;
-
-        public Service1()
+        private IRepository repo;
+        
+        public Service1(IRepository repo)
         {
-            db = new ProjectCrudWcfEntities();
+            this.repo = repo;
         }
 
 
         public List<Alumno> GetAll()
         {
-            List<Alumno> listaAlumnos = db.Alumno.ToList();
+            List<Alumno> listaAlumnos = repo.GetAll();
 
-            return listaAlumnos;  
+            return listaAlumnos;
         }
 
 
         public Alumno GetByGuid(Guid guid)
         {
-            Alumno alumno = db.Alumno.Where(x => x.Guid == guid).FirstOrDefault();
-
+            Alumno alumno = repo.GetByGuid(guid);
+            
             return alumno;
         }
 
 
         public Alumno Post(Alumno alumno)
         {
-            db.Alumno.Add(alumno);
-            db.SaveChanges();
-
-            Alumno alumnoInsertado = db.Alumno.Where(x => x.Guid == alumno.Guid).FirstOrDefault();
+            Alumno alumnoInsertado = repo.Post(alumno);
 
             return alumnoInsertado;
         }
@@ -51,14 +46,7 @@ namespace WcfData
         {
             try
             {
-                Alumno alumnoEncontrado = db.Alumno.Where(x => x.Guid == guid).FirstOrDefault();
-
-                alumnoEncontrado.Guid = alumno.Guid;
-                alumnoEncontrado.Nombre = alumno.Nombre;
-                alumnoEncontrado.Apellidos = alumno.Apellidos;
-                alumnoEncontrado.Dni = alumno.Dni;
-
-                db.SaveChanges();
+                Alumno alumnoEncontrado = repo.Put(guid, alumno);
 
                 return GetByGuid(alumno.Guid);
             }
@@ -73,11 +61,8 @@ namespace WcfData
         {
             try
             {
-                Alumno alumno = db.Alumno.Where(x => x.Guid == guid).FirstOrDefault();
-
-                db.Alumno.Remove(alumno);
-                db.SaveChanges();
-
+                bool alumno = repo.Delete(guid);
+                
                 return true;
             }
             catch (Exception ex)
@@ -85,6 +70,5 @@ namespace WcfData
                 throw ex;
             }
         }
-
     }
 }

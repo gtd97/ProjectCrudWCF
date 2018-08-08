@@ -12,10 +12,9 @@ namespace ClienteWcfData
     {
         private static SingleConnection _instance;
 
-        // Constructor is 'protected'
-
         protected SingleConnection()
         {
+
         }
 
         public static SingleConnection Instance()

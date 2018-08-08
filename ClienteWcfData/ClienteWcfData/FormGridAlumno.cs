@@ -14,13 +14,10 @@ namespace ClienteWcfData
     public partial class FormGridAlumno : Form
     {
         FormAñadirAlumno formAdd;
-        SingleConnection _conn;
 
         public FormGridAlumno()
         {
             InitializeComponent();
-
-            _conn = SingleConnection.Instance();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -47,8 +44,9 @@ namespace ClienteWcfData
             dgv_grid.Columns.Clear();
             dgv_grid.Refresh();
 
-            ReferenciaWeb.Service1Client svc = new ReferenciaWeb.Service1Client("Http");
-            
+            //ReferenciaWeb.Service1Client svc = new ReferenciaWeb.Service1Client("Http");
+            ReferenciaWeb.Service1Client svc = new ReferenciaWeb.Service1Client();
+
             Alumno alumnoEntontrado = svc.GetByGuid( Guid.Parse(tb_guid.Text) );
 
             string[] row = new string[] {
@@ -58,7 +56,6 @@ namespace ClienteWcfData
                 alumnoEntontrado.Nombre
             };            
             
-
             dgv_grid.DataSource = row;
             AñadirButtons(dgv_grid);
         }
@@ -67,26 +64,30 @@ namespace ClienteWcfData
         #region click_http
         private void click_http(object sender, EventArgs e)
         {
-            GetAllByProtocol("Http");
+            //GetAllByProtocol("Http");
+            GetAllByProtocol();
         }
         #endregion
 
         #region click_Tcp
         private void click_Tcp(object sender, EventArgs e)
         {
-            GetAllByProtocol("Tcp");
+            //GetAllByProtocol("Tcp");
+            GetAllByProtocol();
         }
         #endregion
 
         #region GetAllByProtocol
-        public void GetAllByProtocol(string protocol)
+        //public void GetAllByProtocol(string protocol)
+        public void GetAllByProtocol()
         {
             dgv_grid.DataSource = null;
             dgv_grid.Rows.Clear();
             dgv_grid.Columns.Clear();
             dgv_grid.Refresh();
 
-            ReferenciaWeb.Service1Client svc = new ReferenciaWeb.Service1Client(protocol);
+            //ReferenciaWeb.Service1Client svc = new ReferenciaWeb.Service1Client(protocol);
+            ReferenciaWeb.Service1Client svc = new ReferenciaWeb.Service1Client();
 
             // Rellenar Grid
             List<Alumno> listaAlumnos = svc.GetAll();
@@ -122,19 +123,23 @@ namespace ClienteWcfData
         #region Actualizar
         public void Actualizar(object sender, EventArgs e)
         {
-            GetAllByProtocol("Http");
+            //GetAllByProtocol("Http");
+            GetAllByProtocol();
         }
         #endregion
 
         #region EliminarAlumno
         public void EliminarAlumno(Guid guid)
         {
-            ReferenciaWeb.Service1Client svc = new ReferenciaWeb.Service1Client("Http");
+            //ReferenciaWeb.Service1Client svc = new ReferenciaWeb.Service1Client("Http");
+            ReferenciaWeb.Service1Client svc = new ReferenciaWeb.Service1Client();
+
             bool result = svc.Delete(guid);
 
             if (result == true)
             {
-                GetAllByProtocol("Http");
+                //GetAllByProtocol("Http");
+                GetAllByProtocol();
             }
         }
         #endregion

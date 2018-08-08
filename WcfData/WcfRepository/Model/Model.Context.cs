@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WcfData.Model
+namespace WcfRepository.Model
 {
     using System;
     using System.Data.Entity;

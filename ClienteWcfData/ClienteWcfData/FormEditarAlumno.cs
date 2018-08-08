@@ -28,7 +28,8 @@ namespace ClienteWcfData
         #region click_editar
         private void click_editar(object sender, EventArgs e)
         {
-            ReferenciaWeb.Service1Client svc = new ReferenciaWeb.Service1Client("Http");
+            //ReferenciaWeb.Service1Client svc = new ReferenciaWeb.Service1Client("Http");
+            ReferenciaWeb.Service1Client svc = new ReferenciaWeb.Service1Client();
 
             Alumno alumnoNuevo = new Alumno { Guid = Guid.Parse(tb_guid.Text), Nombre = tb_nombre.Text, Apellidos = tb_apellido.Text, Dni = tb_dni.Text };
 

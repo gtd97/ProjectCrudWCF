@@ -23,7 +23,8 @@ namespace ClienteWcfData
         #region click_añadir
         public void click_añadir(object sender, EventArgs e)
         {
-            ReferenciaWeb.Service1Client svc = new ReferenciaWeb.Service1Client("Http");
+            //ReferenciaWeb.Service1Client svc = new ReferenciaWeb.Service1Client("Http");
+            ReferenciaWeb.Service1Client svc = new ReferenciaWeb.Service1Client();
 
             Alumno alumnoNuevo = new Alumno { Guid = Guid.NewGuid(), Nombre = tb_nombre.Text, Apellidos = tb_apellido.Text, Dni = tb_dni.Text };
 

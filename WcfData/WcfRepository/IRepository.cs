@@ -6,10 +6,10 @@ using System.ServiceModel;
 using System.Text;
 using WcfRepository.Model;
 
-namespace WcfData
+namespace WcfRepository
 {
     [ServiceContract]
-    public interface IService1
+    public interface IRepository
     {
         [OperationContract]
         List<Alumno> GetAll();
@@ -25,5 +25,5 @@ namespace WcfData
 
         [OperationContract]
         bool Delete(Guid guid);
-    }    
+    }
 }

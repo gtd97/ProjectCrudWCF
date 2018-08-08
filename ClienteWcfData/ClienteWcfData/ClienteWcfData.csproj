@@ -94,14 +94,14 @@
     <None Include="Connected Services\ReferenciaWeb\ClienteWcfData.ReferenciaWeb.Alumno.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ReferenciaWeb\service.wsdl" />
-    <None Include="Connected Services\ReferenciaWeb\service.xsd">
+    <None Include="Connected Services\ReferenciaWeb\service1.wsdl" />
+    <None Include="Connected Services\ReferenciaWeb\service2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ReferenciaWeb\service1.xsd">
+    <None Include="Connected Services\ReferenciaWeb\service21.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ReferenciaWeb\WcfData.Model.xsd">
+    <None Include="Connected Services\ReferenciaWeb\WcfRepository.Model1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">
